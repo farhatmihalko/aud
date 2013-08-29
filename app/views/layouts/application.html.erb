@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Audarim</title>
+  <%= stylesheet_link_tag "bootstrap", :media => "all" %>
+  <%= stylesheet_link_tag "bootstrap-responsive", :media => "all" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= javascript_include_tag "jquery" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="../">Audarme <span id="logo" href="../"></span></a>
+        <ul class="nav">
+          <li><a href="http://audarme.kz">Главная</a></li>
+          <li><a href="http://audarme.kz/api">API</a></li>
+          <li><a href="http://audarme.kz/about_us">О нас</a></li>
+          <li><a href="http://audarme.kz/examples">Примеры</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <% if @show %>
+    <div class="adv-container" style="display:hide;">
+      <%= show_image(@adverts[1].addsloader.url) %>
+    </div>
+  <% end %>
+
+  <div class="container application">
+    
+    <%= yield %>
+
+  </div>
+
+  <footer>
+  <div class="row">
+    <% if @show %>
+      <div class="footer-adv">
+        <img src=<%=show_image(@adverts[3].addsloader.url)%> >
+      </div>
+    <% end %>
+  </div>
+  <div class="footer-menu">
+    <ul>
+      <li><a href="http://audarme.kz">Главная</a></li>
+      <li><a href="http://audarme.kz/about_us">О нашем сервисе</a></li>
+      <li><a href="http://audarme.kz/api">API</a></li>
+      <li><a href="http://audarme.kz/examples">Примеры</a></li>
+      <li><a href="http://audarme.kz/contact_us">Связаться с нами</a></li>
+    </ul>
+    <div class="copy">
+      &copy; Audarme.kz 2013
+    </div>
+  </div>
+</footer>
+</body>
+</html>
