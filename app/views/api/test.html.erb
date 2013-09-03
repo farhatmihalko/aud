@@ -1,0 +1,18 @@
+<div class="row-fluid">
+	<div class="span3">	
+		<%= render "words/search_form" %>
+	</div>
+	<div class="span7">
+		<div id="js-text-container">
+			<h3>Перевод слова "<%= @word.name %>"</h3>	
+			<%= raw @html %>
+		</div>
+	</div>
+	<div class="span2 banner">
+		<% if @show %>
+			<div class="adv-sidebar">
+				<img src=<%= show_image(@adverts[2].addsloader.url) %> >
+			</div>
+		<% end %>
+	</div>
+</div>

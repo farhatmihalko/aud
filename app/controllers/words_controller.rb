@@ -87,34 +87,29 @@ class WordsController < ApplicationController
   end
 
   def nearby
+
+    response.headers["Access-Control-Allow-Methods"] = "GET, PUT, POST, DELETE"
+    response.headers["Access-Control-Allow-Headers"] = "*"
+    response.headers['Access-Control-Allow-Origin'] = '*'
+
     @word = Word.where(:language => params['lang'], :name => params['name']).first
     @lower = Word.where(:language => params['lang']).order(:indexed_name)
       .find(:all, :conditions => ['indexed_name > ? ', @word.indexed_name],:limit => 4)
     @upper = Word.where(:language => params['lang']).find(:all, :order => 'indexed_name desc',
-      :conditions => ['indexed_name <= ? ', @word.indexed_name],:limit => 4).reverse
+      :conditions => ['indexed_name <= ? ', @word.indexed_name],:limit => 5).reverse
     render :json => @upper + @lower
   end
 
-  def add_word_kz
-    @word = Word.new
-    @word.name = params['name']
-    @word.language = 'kz'
-    @word.definition = params['definition']
-    @check = Word.where(name: @word.name).all.to_a
-    if (@check.count == 0)
-      @word.save
+  def random
+    @rand = []
+    @words = Word.where(:language => params['lang'])
+    (1..9).each do
+      num = rand(@words.count)
+      r = @words.first(:offset => num)
+      @rand << r
     end
-  end
-
-  def add_word_ru
-    @word = Word.new
-    @word.name = params['name']
-    @word.language = 'ru'
-    @word.definition = params['definition']
-    @check = Word.where(name: @word.name).all.to_a
-    if (@check.count == 0)
-      @word.save
-    end
+    @rand.sort_by! {|obj| obj.indexed_name}
+    render :json => @rand
   end
 
   def word_exist

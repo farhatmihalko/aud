@@ -222,6 +222,10 @@ footer{
 	border: none;
 }
 
+#suggestions li:first-child a {
+	border-top: 1px solid #ccc;
+}
+
 
 
 /* Logo */
@@ -290,4 +294,59 @@ body .search-bar-keyboard .btn{
 	box-sizing : border-box;
 	background: white;
 	border-radius: 4px;
+}
+
+
+/* Article layout */
+
+#js-text-container {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.disambig h5 {
+	color:#00CC7A;
+	font-size:20px;
+}
+
+#js-text-container abbr {
+	font-style:italic;
+	border:none;
+	color:rgb(168, 24, 24);
+	font-weight: bold;
+}
+
+#js-text-container ul {
+	list-style: none;
+	margin: 0 0 10px 10px;
+}
+
+#js-text-container ul.disambig {
+	margin: 0 0 10px 0;
+}
+
+
+#js-text-container .example {
+	color:grey;
+}
+
+#js-text-container em {
+	color:#555;
+}
+
+#js-text-container .example em {
+	color:grey;
+}
+
+.equiv-enum {
+	color:#444;
+	font-weight:bold;
+}
+
+.syn {
+	color:#444;
+	font-weight:bold;	
+}
+
+.parts > abbr {
+	font-size: 18px;
 }

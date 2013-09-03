@@ -26,7 +26,13 @@ Sozdik::Application.routes.draw do
   match 'api/index/:word' => 'api#indexed_name'
   match 'adverts/destroy/:id' => 'adverts#destroy'
 
+  match 'api/parse/:lang/:name' => 'api#parse'
+
+  match 'api/find_syn' => 'api#find_syn'
+  match 'api/find_abbr' => 'api#find_abbr'
+
   match 'words/nearby/:lang/:name' => 'words#nearby'
+  match 'random/:lang' => 'words#random'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
