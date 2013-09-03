@@ -2,6 +2,10 @@
  *= require_self
  */
 
+html body {
+	background-image: url("/assets/bg.png");
+}
+
 .container{
 	width: auto;
 	margin-left: 20px;
@@ -223,12 +227,14 @@ footer{
 /* Logo */
 
 #logo {
-	background: url('/assets/logo-red.png') 0 0 no-repeat;
-	background-size: auto 25px;
-	width: 25px;
-	height: 25px;
+	background: url('/assets/logo-red.png');
+	background-size: auto 30px;
+	width: 30px;
+	height: 30px;
 	display: inline-block;	
 	vertical-align:middle;
+	position: relative;
+	top: -2px;
 }
 
 .brand {
@@ -260,6 +266,7 @@ footer{
 	margin-bottom : 10px;
 	background: rgba(68, 68, 68, .9);
 	border-radius: 4px;
+	display: none;
 }
 body .search-bar-keyboard .btn{
 	background: white;
@@ -274,4 +281,13 @@ body .search-bar-keyboard .btn{
 
 .js-suggestion-li {
 	cursor: pointer;
+}
+
+
+#js-text-container{
+	padding : 10px 20px;
+	box-shadow: 0 0 4px rgba(0,0,0,0.15);
+	box-sizing : border-box;
+	background: white;
+	border-radius: 4px;
 }

@@ -260,7 +260,10 @@ new Module {
 	name : "Set global tasks"
 	autoload : true
 	init : ->
-		local_address = "http://localhost:3000"
+		local_address = "http://audarme.kz/"
+
+		window.switcLan = ->
+			SITE_ENT.get_language_container().click()
 
 		#global word
 		window.setWord = (value) ->
@@ -296,9 +299,13 @@ new Module {
 					callback @,data
 			}
 
+		window.current_light = null
 		window.updateLi = ->
 			list = SITE_ENT.get_suggestion_point()
 			list.on 'click', ->
+				window.current_light.removeClass('active') if window.current_light
+				$(this).addClass 'active'
+				window.current_light = $(this)
 				setValue =  $(this).find('a').text()
 				SITE_ENT.get_search_input().val( setValue ).focus()
 				SITE_ENT.get_search_button().click()
@@ -311,7 +318,8 @@ new Module {
 	autoload : true
 	init : ->
 		SITE_ENT.get_keyboard_tumblr().on 'click', ->
-			SITE_ENT.get_keyboard_container().toggle('fast')
+			# SITE_ENT.get_keyboard_container()
+			SITE_ENT.get_keyboard_container().parent().toggle('fast')
 }
 
 new Module {
@@ -346,6 +354,14 @@ new Module {
  				name = data.name.substring(0, 1).toUpperCase() + data.name.substring(1, data.name.length)
  				SITE_ENT.get_text_container().find('h4').html( name )
  				SITE_ENT.get_text_container().find('p').html( data.definition )
+ 				#adding and fix bugs
+ 				SITE_ENT.get_text_container().find('a').each ->
+ 					$(this).on 'click', ->
+ 						window.switcLan()
+ 						SITE_ENT.get_search_input().val( $(this).text() )
+ 						SITE_ENT.get_search_button().click()
+ 						return false
+ 				#end
  		SITE_ENT.get_search_input().on 'keyup', (e) ->
  			SITE_ENT.get_search_button().trigger('click') if e.keyCode is 13
 }
@@ -357,7 +373,7 @@ new Module {
 		create_menu = (list) ->
 			content = ""
 			list.forEach (a, index) ->
-				content += "<li class=js-suggestion-li><a>#{a}</a></li>"
+				content += "<li class='js-suggestion-li'><a>#{a}</a></li>"
 			content
 
 		SITE_ENT.get_search_input().on 'keyup', (e) ->
@@ -372,4 +388,16 @@ new Module {
 					console.log list	
 					menu.html (create_menu list)
 					window.updateLi()
+}
+
+
+
+new Module {
+	autoload : true
+	name : 'Keyboard'
+	init : ->
+		btn = SITE_ENT.get_keyboard_container().find('.btn')
+		btn.on 'click', ->
+			inp = SITE_ENT.get_search_input()
+			inp.val( inp.val() + $(this).text() )
 }
