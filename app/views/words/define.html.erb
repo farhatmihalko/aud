@@ -16,9 +16,11 @@
 	</div>
 	<div class="span2 banner">
 		<% if @show %>
+			<% if @adverts[2]%>
 			<div class="adv-sidebar">
-				<img src=<%= show_image(@adverts[2].addsloader.url) %> >
+				<img src=<%= show_banner(@adverts[2].banner.url) %> >
 			</div>
+			<% end%>
 		<% end %>
 	</div>
 </div>

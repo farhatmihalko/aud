@@ -27,9 +27,11 @@
   </div>
 
   <% if @show %>
+    <% if @adverts[1]%>
     <div class="adv-container" style="display:hide;">
       <%= show_image(@adverts[1].addsloader.url) %>
     </div>
+    <% end%>
   <% end %>
 
   <div class="container application">
@@ -41,9 +43,11 @@
   <footer>
   <div class="row">
     <% if @show %>
+      <% if @adverts[3]%>
       <div class="footer-adv">
         <img src=<%=show_image(@adverts[3].addsloader.url)%> >
       </div>
+      <% end%>
     <% end %>
   </div>
   <div class="footer-menu">

@@ -1,4 +1,4 @@
-<%= form_for(@advert) do |f| %>
+<%= form_for @advert do |f| %>
   <% if @advert.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@advert.errors.count, "error") %> prohibited this advert from being saved:</h2>
@@ -24,8 +24,8 @@
     <%= f.text_field :place %>
   </div><br/>
   <div class="field">
-    <%= f.label :addsloader %>
-    <%= f.file_field :addsloader %>
+    <%= f.label :banner %>
+    <%= f.file_field :banner %>
   </div><br />
   <div class="actions">
     <%= f.submit %>
