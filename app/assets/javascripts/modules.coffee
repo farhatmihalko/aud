@@ -4,7 +4,7 @@ new Module {
 	init : ->
 
 		# local_address = "http://audarme.kz/"
-		local_address = "http://localhost:3000/"
+		local_address = "http://audarme.kz/"
 
 		window.local_address = local_address
 
@@ -46,7 +46,6 @@ new Module {
 			}
 
 		window.nearby = (inp_string, callback) ->
-			local_address = "http://localhost:3000"
 			val = inp_string.toLowerCase()
 			console.log inp_string
 			return false if val.length == 0
