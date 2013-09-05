@@ -81,7 +81,7 @@ var api_translate = function(){
 
 		if(window === self){
 			self.api_translate = plugin;
-			self.api_translate.appendTo($("#js-example"), "dblclick", "ru");
+			self.api_translate.appendTo($("#js-example"), "dblclick", "kz");
 		}
 
 	});
