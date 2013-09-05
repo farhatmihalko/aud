@@ -343,10 +343,15 @@ body .search-bar-keyboard .btn{
 }
 
 .syn {
-	color:#444;
+	color:#D15D26;
 	font-weight:bold;	
 }
 
 .parts > abbr {
 	font-size: 18px;
+}
+
+.stat {
+	font-weight: bold;
+	color: #777;
 }
