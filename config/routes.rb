@@ -1,6 +1,9 @@
 Sozdik::Application.routes.draw do
-  resources :adverts
+  get "sessions/new"
 
+  get "users/new"
+
+  resources :adverts
 
    get "home/index"
 
@@ -33,6 +36,12 @@ Sozdik::Application.routes.draw do
 
   match 'words/nearby/:lang/:name' => 'words#nearby'
   match 'random/:lang' => 'words#random'
+
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "sign_up" => "users#new", :as => "sign_up"
+  resources :users
+  resources :sessions
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

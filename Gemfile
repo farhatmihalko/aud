@@ -22,8 +22,9 @@ group :assets do
 end
 
 gem 'execjs'
-gem 'therubyracer'
-
+gem 'therubyracer', '~> 0.12.0'
+gem 'libv8'
+gem "bcrypt-ruby", :require => "bcrypt"
 gem 'jquery-rails'
 
 gem "twitter-bootstrap-rails"

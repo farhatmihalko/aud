@@ -1,3 +1,4 @@
+<a href="<%= log_out_path%>" class="btn btn-large">Выйти</a>
 <h1>Listing adverts</h1>
 
 <div class="row">
@@ -15,10 +16,10 @@
     <div class="span2"><%= advert.anchor%></div>
     <div class="span2"><%= advert.humanized_place %></div>
     <div class="span1"><%= advert.counter %></div>
-    <div class="span3"><img src="http://audarme.kz<%= advert.addsloader%>" class="admin-img"/></div>
+    <div class="span3"><img src="<%= show_banner(advert.banner.url)%>" class="admin-img"/></div>
     <div class="span2"><%= link_to 'Show', advert %><br/>
         <%= link_to 'Edit', edit_advert_path(advert) %><br/>
-    <a href="http://audarme.kz/adverts/destroy/<%= advert.id%>">Delete</a></div>
+    <a href="http://localhost:3000/adverts/destroy/<%= advert.id%>">Delete</a></div>
 </div>
 <% end %>
 

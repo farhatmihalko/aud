@@ -1,6 +1,6 @@
 class Advert < ActiveRecord::Base
-  mount_uploader :addsloader, AddsloaderUploader
-  attr_accessible :company, :counter, :addsloader, :anchor, :place
+  mount_uploader :banner, BannerUploader
+  attr_accessible :company, :counter, :banner, :anchor, :place
 
 
   PLACES = {
@@ -22,9 +22,11 @@ class Advert < ActiveRecord::Base
 
   def self.get_first
     ad = Advert.where(:place => 1).last
-    ad.counter+=1
-    ad.save
-    ad
+    if ad
+      ad.counter+=1
+      ad.save
+      return ad
+    end
   end
 
   def humanized_place
@@ -33,15 +35,19 @@ class Advert < ActiveRecord::Base
 
   def self.get_second
     ad = Advert.where(:place => 2).last
-    ad.counter+=1
-    ad.save
-    ad
+    if ad
+      ad.counter+=1
+      ad.save
+      return ad
+    end
   end
 
   def self.get_third
     ad = Advert.where(:place => 3).last
-    ad.counter+=1
-    ad.save
-    ad
+    if ad
+      ad.counter+=1
+      ad.save
+      return ad
+    end
   end
 end
