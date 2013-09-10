@@ -3,8 +3,7 @@ development:
   encoding: unicode
   database: audarme
   username: postgres
-  password: root
-  host: localhost
+  password: RedHawks2013
 
 test:
   adapter: postgresql
@@ -12,5 +11,4 @@ test:
   database: audarme
   pool: 5
   username: postgres
-  password: root
-  host: localhost
+  password: RedHawks2013
