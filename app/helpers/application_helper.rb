@@ -3,6 +3,6 @@ module ApplicationHelper
     path = "http://audarme.kz#{url}"
   end
   def show_banner(url)
-    path = "http://localhost:3000#{url}"
+    path = "http://audarme.kz#{url}"
   end  
 end

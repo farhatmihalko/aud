@@ -11,16 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130905090152) do
+ActiveRecord::Schema.define(:version => 20130910184024) do
 
   create_table "adverts", :force => true do |t|
+    t.integer  "counter"
+    t.string   "company"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "place"
-    t.string   "company"
-    t.string   "anchor"
     t.string   "addsloader"
-    t.integer  "counter"
+    t.string   "anchor"
+    t.integer  "place"
     t.string   "banner"
   end
 
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20130905090152) do
     t.string   "password_salt"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "banner"
   end
 
   create_table "words", :force => true do |t|

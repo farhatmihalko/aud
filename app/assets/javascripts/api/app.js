@@ -61,12 +61,13 @@ var api_translate = function(){
 		* Show helpes to see result (popover)
 		*/
 		showTooltip : function(text, type){
-			var time = 15000;
+			var time = 10000;
 			var n = noty({
 				text : text,
 				type : type,
 				layout : "bottomRight"
 			});
+			clearHref();
 			setTimeout(function(){
 				var _id_ = n.options.id;
 				$.noty.close( _id_ ); 
@@ -74,6 +75,13 @@ var api_translate = function(){
 		}
 	}
 
+
+	var clearHref = function(){
+		$(".noty_text").find("a").attr('href', '#');
+		$(".noty_text").find('a').click(function(){
+			return false;
+		});
+	}
 
 	$(document).ready(function(){
 
