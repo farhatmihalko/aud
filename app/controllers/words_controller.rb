@@ -28,12 +28,6 @@ class WordsController < ApplicationController
       end
       return
     end
-    other_lang = params['lang'] == 'kz'? 'ru' : 'kz'
-    #@word.definition.gsub!(/(<a[^>]*href=")[^"]*("[^>]*>)(.*)(<\/a>)/ix, '\1/words/'+ other_lang +'/\3\2\3\4')
-
-    response.headers["Access-Control-Allow-Methods"] = "GET, PUT, POST, DELETE"
-    response.headers["Access-Control-Allow-Headers"] = "*"
-    response.headers['Access-Control-Allow-Origin'] = '*'
 
     respond_to do |format|
       format.html { render :json => @word }
@@ -48,50 +42,20 @@ class WordsController < ApplicationController
     end
   end
 
-  def define_ru
-	@word = Word.where(:language => params['lang'], :name => params['name']).first
-   	if (@word.nil?)
-		if (request.nil?)
-			render :json => 'Error'
-		else
-			render :define
-		end
-		return
-	end
-    other_lang = params['lang'] == 'kz'? 'ru' : 'kz'
-    respond_to do |format|
-	format.html {render :define}
-        format.json {render:json => @word}
-    end
-  end
-
   def suggest
-
-    response.headers["Access-Control-Allow-Methods"] = "GET, PUT, POST, DELETE"
-    response.headers["Access-Control-Allow-Headers"] = "*"
-    response.headers['Access-Control-Allow-Origin'] = '*'
-
     @suggestions = Word.order(:indexed_name)
       .where(:language => params['lang'])
       .find(:all, :conditions => ['name LIKE ? ', ''+params[:name]+'%'],:limit => 10)
-=begin
-	if params['lang'] == 'kz' && @suggestions.empty?
-		Lemmatizer.lemmatize(params[:name]).each do |lemma|
-			if Word.where(language: lang, name: lemma).all.count > 0
-				@suggestions << lemma
-			end
-		end
-	end
-=end	  
-    render :json => @suggestions
+      .map{|w| w.name}
+  
+    if @suggestions.count < 10
+      @suggestions = Word.similar(params[:lang], params[:name])
+    end
+
+    render :json => @suggestions[0,10]
   end
 
   def nearby
-
-    response.headers["Access-Control-Allow-Methods"] = "GET, PUT, POST, DELETE"
-    response.headers["Access-Control-Allow-Headers"] = "*"
-    response.headers['Access-Control-Allow-Origin'] = '*'
-
     @word = Word.where(:language => params['lang'], :name => params['name']).first
     @lower = Word.where(:language => params['lang']).order(:indexed_name)
       .find(:all, :conditions => ['indexed_name > ? ', @word.indexed_name],:limit => 4)
@@ -110,20 +74,6 @@ class WordsController < ApplicationController
     end
     @rand.sort_by! {|obj| obj.indexed_name}
     render :json => @rand
-  end
-
-  def word_exist
-    @name = params['name']
-    @word = Word.where(name: @name).all.to_a
-    if (@word.count == 0)
-      return false
-    else
-      return true
-    end
-  end
-
-  def lem
-    raise Lemmatizer.lemmatize(params[:word]).inspect
   end
 
   def examples
