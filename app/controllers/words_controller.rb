@@ -49,7 +49,7 @@ class WordsController < ApplicationController
       .map{|w| w.name}
   
     if @suggestions.count < 10
-      @suggestions = Word.similar(params[:lang], params[:name])
+      @suggestions += Word.similar(params[:lang], params[:name])
     end
 
     render :json => @suggestions[0,10]
