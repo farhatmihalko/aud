@@ -1,7 +1,7 @@
 var api_translate = function(){
 
 	var url = "http://audarme.kz/assets";
-	url = "http://localhost:3000/assets"
+	// url = "http://localhost:3000/assets"
 	var generator = (function(){
 		//The files to loading
 		["/api/default.js", "/api/noty.js"].forEach(function(el, index){
