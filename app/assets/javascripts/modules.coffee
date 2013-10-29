@@ -3,7 +3,6 @@ new Module {
 	autoload : true
 	init : ->
 
-		# local_address = "http://audarme.kz/"
 		local_address = "http://audarme.kz/"
 
 		window.local_address = local_address

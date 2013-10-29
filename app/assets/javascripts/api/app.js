@@ -1,6 +1,7 @@
 var api_translate = function(){
 
 	var url = "http://audarme.kz/assets";
+	url = "http://localhost:3000/assets"
 	var generator = (function(){
 		//The files to loading
 		["/api/default.js", "/api/noty.js"].forEach(function(el, index){
@@ -47,8 +48,17 @@ var api_translate = function(){
 					API.showTooltip(connect, "alert");
 				},
 				success : function(data){
-					result = "Перевод" + data.definition;
+					result = "<h5><a data-href='http://audarme.kz/' id='js-intro-href'>Посетите наш сайт Audarme.kz</a></h5>";
+					result += "Перевод<br>" + data.definition;
 					API.showTooltip(result, "success");
+					$("#js-intro-href").on('click', function(){
+						document.location.replace($(this).attr('data-href') || 'http://audarme.kz/');
+						return false;
+					});	
+					$(".noty_message").find('a').on('click', function(){
+						document.location.replace('http://audarme.kz/');
+						return false;
+					});
 				},
 				error : function(errCode){
 					console.log( errCode.fail() )
