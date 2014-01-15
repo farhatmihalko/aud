@@ -14,3 +14,4 @@ module ApplicationHelper
   def ru_letters
   	letters = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
   end
+end

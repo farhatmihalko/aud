@@ -1,8 +1,4 @@
 Sozdik::Application.routes.draw do
-<<<<<<< HEAD
-=======
-
->>>>>>> e602bf29afc1bd8a2695e49043a7b0921be61c49
   get "sessions/new"
 
   get "users/new"
