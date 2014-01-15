@@ -1,16 +1,20 @@
 Sozdik::Application.routes.draw do
+<<<<<<< HEAD
+=======
+
+>>>>>>> e602bf29afc1bd8a2695e49043a7b0921be61c49
   get "sessions/new"
 
   get "users/new"
 
   resources :adverts
 
-   get "home/index"
+  get "home/index"
 
   root :to => "words#index"
 
-  match 'translate/:lang/:lang2/:name' => 'translate#define'
-  match 'translate/kk/ru/:name' => 'translate#kz', :as => :word_definition
+  match 'words/similar/:lang/:word' => 'words#similar'
+
   match 'translate/ru/kk/words/suggest/:lang/:name' => 'words#suggest'
   match 'translate/kk/ru/words/suggest/:lang/:name' => 'words#suggest'
   match 'translate/kk/ru/words/:lang/:name' => 'words#define', :as => :word_definition
@@ -32,6 +36,10 @@ Sozdik::Application.routes.draw do
 
   match 'api/parse/:lang/:name' => 'api#parse'
 
+  match 'catalog' => 'words#catalog'
+  match 'catalog/:lang' => 'words#catalog'
+  match 'catalog/:lang/:letter' => 'words#catalog'
+  match 'catalog/:lang/:letter/:page' => 'words#catalog'
   match 'api/find_syn' => 'api#find_syn'
   match 'api/find_abbr' => 'api#find_abbr'
 
@@ -100,4 +108,5 @@ Sozdik::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
 end

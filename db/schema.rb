@@ -14,14 +14,23 @@
 ActiveRecord::Schema.define(:version => 20130910184024) do
 
   create_table "adverts", :force => true do |t|
+<<<<<<< HEAD
     t.integer  "counter"
     t.string   "company"
+=======
+    t.string   "company"
+    t.integer  "counter"
+    t.integer  "place"
+>>>>>>> e602bf29afc1bd8a2695e49043a7b0921be61c49
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "addsloader"
     t.string   "anchor"
+<<<<<<< HEAD
     t.integer  "place"
     t.string   "banner"
+=======
+>>>>>>> e602bf29afc1bd8a2695e49043a7b0921be61c49
   end
 
   create_table "users", :force => true do |t|
