@@ -116,6 +116,6 @@ class AdvertsController < ApplicationController
     ad = Advert.find(params[:id])
     ad.counter+=1
     ad.save!
-    redirect params[:path]
+    redirect_to ad.anchor
   end
 end

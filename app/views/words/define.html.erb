@@ -20,7 +20,7 @@
 		<% if @show %>
 			<% if @adverts[2]%>
 			<div class="adv-sidebar">
-				<img src=<%= show_banner(@adverts[2].banner.url) %> >
+				<a href="http://audarme.kz/adverts/hit/<%= @adverts[2].id %>"><img src=<%= show_banner(@adverts[2].banner.url) %> ></a>
 			</div>
 			<% end%>
 		<% end %>

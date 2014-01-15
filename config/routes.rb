@@ -28,6 +28,7 @@ Sozdik::Application.routes.draw do
   match 'examples' => 'words#examples'
   match 'api/index/:word' => 'api#indexed_name'
   match 'adverts/destroy/:id' => 'adverts#destroy'
+  match 'adverts/hit/:id' => 'adverts#hit'
 
   match 'api/parse/:lang/:name' => 'api#parse'
 

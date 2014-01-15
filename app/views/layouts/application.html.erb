@@ -40,7 +40,7 @@
   <% if @show %>
     <% if @adverts[1]%>
     <div class="adv-container" style="display:hide;">
-      <%= show_image(@adverts[1].addsloader.url) %>
+      <a href="http://audarme.kz/adverts/hit/<%= @adverts[1].id %>"><%= show_image(@adverts[1].addsloader.url) %></a>
     </div>
     <% end%>
   <% end %>
