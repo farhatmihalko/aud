@@ -1,0 +1,11 @@
+<% if @lang == 'kz' %>	
+	<% kz_letters().split("").each do |l| %>
+		<%= link_to l,catalog_anchor("kz",l)%>
+	<% end %>
+<% else %>
+	<% ru_letters().split("").each do |l| %>
+		<%= link_to l,catalog_anchor("ru",l)%>
+	<% end %>
+<% end %>
+<%= @words %>
+<%= will_paginate @words %>

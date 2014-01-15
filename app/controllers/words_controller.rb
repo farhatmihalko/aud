@@ -5,6 +5,17 @@ class WordsController < ApplicationController
     render :define
   end
 
+  def catalog
+    WillPaginate.per_page = 1
+    @page = params[:page] || 1
+    @lang = params[:lang] || 'kz'
+    @letter = params[:letter] || 'a'
+    @words = Word.order(:indexed_name)
+      .where(:language => params['lang'])
+      .find(:all, :conditions => ['name LIKE ? ', ''+@string+'%']).paginate(:page => @page)
+    #@pagination = (@words.count == 30) || @page > 1
+  end
+
   def define
     @word = Word.where(:language => params['lang'], :name => params['name']).first
     if (@word.nil?)

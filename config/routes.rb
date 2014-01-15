@@ -31,6 +31,10 @@ Sozdik::Application.routes.draw do
 
   match 'api/parse/:lang/:name' => 'api#parse'
 
+  match 'catalog' => 'words#catalog'
+  match 'catalog/:lang' => 'words#catalog'
+  match 'catalog/:lang/:letter' => 'words#catalog'
+  match 'catalog/:lang/:letter/:page' => 'words#catalog'
   match 'api/find_syn' => 'api#find_syn'
   match 'api/find_abbr' => 'api#find_abbr'
 
