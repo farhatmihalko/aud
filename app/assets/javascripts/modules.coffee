@@ -3,7 +3,6 @@ new Module {
 	autoload : true
 	init : ->
 
-		# local_address = "http://audarme.kz/"
 		local_address = "http://audarme.kz/"
 
 		window.local_address = local_address
@@ -37,6 +36,7 @@ new Module {
 			console.log inp_string
 			return false if val.length == 0
 			#init
+			local_address = ""
 			language = window.CURRENT_LANGUAGE
 			$.ajax {
 				word : val
@@ -155,11 +155,8 @@ new Module {
 			window.autocomplete inp.val(), (obj, data) ->
 				if window.CURRENT_WORD is obj.word
 					menu = SITE_ENT.get_suggestion_menu()
-					list = []
-					data.forEach (a, index) ->
-						list.push a.name
-					console.log list	
-					menu.html (window.create_menu list)
+					console.log data	
+					menu.html (window.create_menu data)
 					window.updateLi()
 }
 

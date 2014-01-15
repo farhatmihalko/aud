@@ -14,14 +14,13 @@
 ActiveRecord::Schema.define(:version => 20130905090152) do
 
   create_table "adverts", :force => true do |t|
+    t.string   "company"
+    t.integer  "counter"
+    t.integer  "place"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "place"
-    t.string   "company"
-    t.string   "anchor"
     t.string   "addsloader"
-    t.integer  "counter"
-    t.string   "banner"
+    t.string   "anchor"
   end
 
   create_table "users", :force => true do |t|
