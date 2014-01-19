@@ -1,11 +1,15 @@
 <% if @lang == 'kz' %>	
+	<%= link_to 'Ru',language_change_link(@lang)%><br/>
 	<% kz_letters().split("").each do |l| %>
 		<%= link_to l,catalog_anchor("kz",l)%>
 	<% end %>
 <% else %>
+	<%= link_to 'Kz',language_change_link(@lang)%><br/>
 	<% ru_letters().split("").each do |l| %>
 		<%= link_to l,catalog_anchor("ru",l)%>
 	<% end %>
+<% end %><br/>
+<% @words.each do |w| %>
+	<%= w.name %><br/>
 <% end %>
-<%= @words %>
-<%= will_paginate @words %>
+<%= will_paginate(@words) %>

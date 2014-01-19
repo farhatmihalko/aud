@@ -14,4 +14,12 @@ module ApplicationHelper
   def ru_letters
   	letters = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
   end
+  def language_change_link lang
+    if lang == 'ru'
+      lang = 'kz'
+    else
+      lang = 'ru'
+    end
+    anchor = 'http://audarme.kz/catalog/'+lang.to_s
+  end
 end
