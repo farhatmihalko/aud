@@ -9,6 +9,8 @@ Sozdik::Application.routes.draw do
 
   root :to => "words#index"
 
+  match 'words/:word' => 'words#index'
+
   match 'words/similar/:lang/:word' => 'words#similar'
 
   match 'translate/ru/kk/words/suggest/:lang/:name' => 'words#suggest'

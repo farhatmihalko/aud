@@ -10,6 +10,6 @@
 	<% end %>
 <% end %><br/>
 <% @words.each do |w| %>
-	<%= w.name %><br/>
+	<%= link_to w.name,controller: 'words',action: 'index',word: w.id %><br/>
 <% end %>
 <%= will_paginate(@words) %>

@@ -1,5 +1,9 @@
 class WordsController < ApplicationController
   def index
+    @word = nil
+    if (params[:word])
+      @word = Word.find(params[:word])
+    end
     @adverts = Advert.get_adverts
     @show = true
     render :define
