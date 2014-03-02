@@ -14,10 +14,10 @@ class WordsController < ApplicationController
     @page = @page.to_i
     @lang = params[:lang] || 'kz'
     @letter = params[:letter] || 'А'
-    
+
     @words = Word.order(:indexed_name)
-      .where(:language => params['lang'])
-      .paginate(:page => @page,:per_page => 1000).find(:all, :conditions => ['name ILIKE ? ', ''+@letter+'%'])
+      .where(:language => @lang)
+      .paginate(:page => @page,:per_page => 200).find(:all, :conditions => ['name ILIKE ? ', '' + @letter +'%'])
   end
 
   def define
@@ -62,7 +62,7 @@ class WordsController < ApplicationController
       .where(:language => params['lang'])
       .find(:all, :conditions => ['name LIKE ? ', ''+params[:name]+'%'],:limit => 10)
       .map{|w| w.name}
-  
+
     if @suggestions.count < 10
       @suggestions += Word.similar(params[:lang], params[:name])
     end

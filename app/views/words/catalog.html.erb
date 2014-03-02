@@ -1,15 +1,67 @@
-<% if @lang == 'kz' %>	
-	<%= link_to 'Ru',language_change_link(@lang)%><br/>
-	<% kz_letters().split("").each do |l| %>
-		<%= link_to l,catalog_anchor("kz",l)%>
-	<% end %>
+<% if @lang == 'kz' %>
+
+  <div class="one column wide">
+    <div class="js-chars">
+      <% kz_letters().split("").each do |l| %>
+        <% if @letter == l %>
+          <%= link_to l, catalog_anchor("kz", l), :class=>"char active" %>
+        <% else %>
+          <%= link_to l, catalog_anchor("kz", l), :class=>"char" %>
+        <% end %>
+
+      <% end %>
+    </div>
+  </div>
+
 <% else %>
-	<%= link_to 'Kz',language_change_link(@lang)%><br/>
-	<% ru_letters().split("").each do |l| %>
-		<%= link_to l,catalog_anchor("ru",l)%>
-	<% end %>
-<% end %><br/>
-<% @words.each do |w| %>
-	<%= link_to w.name,controller: 'words',action: 'index',word: w.id %><br/>
+
+  <div class="one column wide">
+    <div class="js-chars">
+      <% ru_letters().split("").each do |l| %>
+         <%= link_to l,catalog_anchor("ru", l), :class=> "char" %>
+      <% end %>
+    </div>
+  </div>
+
 <% end %>
-<%= will_paginate(@words) %>
+
+<div class="eleven column wide">
+
+  <div class="ui c-segment">
+    <div class="ui row column custom-header">
+      <div class="ui left floated header">
+        <div class="ui red ribbon label" style="left: -27px;">
+          Слова на букву <b><%= @letter %></b>
+        </div>
+      </div>
+      <div class="ui right floated header">
+        <div class="ui icon input">
+          <input type="text" placeholder="Поиск слова ...">
+          <i class="search icon"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="words-container">
+      <% @words.each do |w| %>
+        <a href="#" class="link" data-language="<%= w.language %>" data-definition="<%= w.definition %>"><%= w.name %></a>
+      <% end %>
+    </div>
+
+    <div class="word-html"></div>
+
+  </div>
+
+
+
+  <%= will_paginate(@words) %>
+</div>
+
+
+
+
+<!--
+  <%= link_to 'Ru',language_change_link(@lang)%>
+  <br/>
+  <%= link_to 'Kz',language_change_link(@lang)%>
+  <br/> -->

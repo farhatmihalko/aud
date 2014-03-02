@@ -1,0 +1,88 @@
+html{
+  /*min-width: 1180px;*/
+}
+body{
+  background: #FCFCFC url(../assets/pattern-graphic-b-pmi1.png) repeat;
+  font-family: "proxima-nova", "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: #f8f6ed;
+  background-position: top left;
+  background-attachment: scroll;
+}
+
+p{
+  line-height: 1.5em;
+}
+
+a.link{
+	display:inline-block;
+	text-decoration:none;
+	color: #444;
+	padding: 10px;
+  border-radius: 4px;
+}
+a.link:hover{
+	background: #ffe640;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.pad-top{
+	padding-top: 10px;
+}
+
+.c-segment{
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+  background: white;
+  padding: 10px 12px;
+	margin-top: 0px!important;
+}
+
+/* alphabet */
+.js-chars{
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  display: inline-block;
+}
+.char{
+	text-align: center;
+	width: 18px;
+  display: inline-block;
+  padding: 12px 12px;
+  background: #22bc6a;
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+.char.active{
+  background: white;
+  color: #444;
+}
+
+
+.header-logo{
+  margin-top: 7px;
+  margin-bottom: 7px;
+  clear: both;
+}
+.header-logo img{
+  position: relative;
+  top: -12px;
+  margin: 0px!important;
+}
+
+.custom-header{
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #ddd;
+  margin-bottom: 10px;
+}
+
+.pagination-container{
+  margin-top: 10px;
+  border-top: 1px dashed #ddd;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.words-container{
+  position: relative;
+}

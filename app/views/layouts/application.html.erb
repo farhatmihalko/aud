@@ -2,8 +2,6 @@
 <html>
 <head>
   <title>Audarme.kz - переводи вместе с нами!</title>
-  <%= stylesheet_link_tag "bootstrap", :media => "all" %>
-  <%= stylesheet_link_tag "bootstrap-responsive", :media => "all" %>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= javascript_include_tag "jquery" %>
@@ -24,55 +22,40 @@
 </head>
 <body>
 
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="brand" href="../">Audarme <span id="logo" href="../"></span></a>
-        <ul class="nav">
-          <li><a href="http://audarme.kz">Главная</a></li>
-          <li><a href="http://audarme.kz/api">API</a></li>
-          <li><a href="http://audarme.kz/about_us">О нас</a></li>
-        </ul>
+  <div class="ui page grid stackable">
+
+    <div class="four column wide">
+      <div class="ui fluid vertical menu">
+          <a class="header item popup-header-target" data-content="Audarme.kz проект призванный помочь в переводе!">
+            <h4 class="header-logo">
+              Audarme.kz
+              <img src="../assets/logo-red.png" class="ui mini right floated image">
+            </h4>
+          </a>
+          <a class="item">
+            <i class="home icon"></i> Главная
+          </a>
+          <div class="item">
+            <i class="lab icon"></i> API
+            <div class="menu">
+              <a class="item">Как подключить</a>
+              <a class="item">Использование</a>
+              <a class="item">Вопросы/Ответы</a>
+            </div>
+          </div>
+          <a class="item">
+            <i class="mail icon"></i> Написать нам
+          </a>
+          <a class="item">
+            <i class="setting icon"></i> Настройки
+          </a>
       </div>
     </div>
-  </div>
 
-  <% if @show %>
-    <% if @adverts[1]%>
-    <div class="adv-container" style="display:hide;">
-      <a href="http://audarme.kz/adverts/hit/<%= @adverts[1].id %>"><%= show_image(@adverts[1].addsloader.url) %></a>
-    </div>
-    <% end%>
-  <% end %>
-
-  <div class="container application">
-    
     <%= yield %>
 
   </div>
 
-  <footer>
-  <div class="row">
-    <% if @show %>
-      <% if @adverts[3]%>
-      <div class="footer-adv">
-        <img src=<%=show_image(@adverts[3].addsloader.url)%> >
-      </div>
-      <% end%>
-    <% end %>
-  </div>
-  <div class="footer-menu">
-    <ul>
-      <li><a href="http://audarme.kz">Главная</a></li>
-      <li><a href="http://audarme.kz/about_us">О нашем сервисе</a></li>
-      <li><a href="http://audarme.kz/api">API</a></li>
-      <li><a href="http://audarme.kz/examples">Примеры</a></li>
-      <li><a href="http://audarme.kz/contact_us">Связаться с нами</a></li>
-    </ul>
-    <div class="copy">
-      &copy; Audarme.kz 2013
-    </div>
-  </div>
-</footer>
+
 </body>
 </html>
